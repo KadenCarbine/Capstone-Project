@@ -1,12 +1,11 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
-import CardList from "./CardList";
 
 const Filter = () => {
     const baseAPI = 'https://fakestoreapi.com/products'
 
     const [data, setData] = useState([])
-    const cat = [...new Set(data.map((item) => item.category))]
+    const category = [...new Set(data.map((item) => item.category))]
     const fetchData = async () => {
         try {
             const response = await axios.get(baseAPI)
@@ -32,7 +31,7 @@ const Filter = () => {
     return (
         <>
           <div className="d-flex justify-content-center">
-            {cat.map((Val, id) => {
+            {category.map((Val, id) => {
               return (
                 <button
                   className="btn-dark text-white p-1 px-2 mx-5 btn fw-bold"
