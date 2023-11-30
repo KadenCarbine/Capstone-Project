@@ -2,22 +2,16 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
+import { ShoppingBagOpen, ShoppingCart } from 'phosphor-react';
 import '../NavBar.css'
 
 const NavBar = () => {
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
-      <Container>
-        <Navbar.Brand><Link to='/' className='NavBar-Links' >Logo</Link></Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Brand><Link to='/' className='NavBar-Links d-flex justify-content-start mx-5' >Kaden's Shop</Link></Navbar.Brand>
         <Navbar.Collapse id="basic-navbar-nav" className='justify-content-center'>
-          <Nav>
-            <Link to='/shop' className='NavBar-Links small-links'>Shop</Link>
-            <Link to="/about" className='NavBar-Links small-links'>About</Link>
-          </Nav>
         </Navbar.Collapse>
-        <Navbar.Brand><Link to='/' className='NavBar-Links' >Logo</Link></Navbar.Brand>
-      </Container>
+        <Navbar.Brand><Link to='/cart' className='NavBar-Links' >Checkout <ShoppingCart/></Link></Navbar.Brand>
     </Navbar>
   );
 }

@@ -2,21 +2,20 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Route, Routes  } from 'react-router-dom';
 import NavBar from './Components/NavBar';
-import Home from './Components/Home';
 import CardList from './Components/CardList';
-import About from './Components/About';
-import Filter from './Components/Filter';
+import Cart from './Components/Cart';
+import React, {useState} from 'react';
 
 function App() {
+
+  const [cart, setCart] = useState({})
   return (
     <div className="App">
       <BrowserRouter>
-        <NavBar/>
-        <Filter/>
+        <NavBar cart={cart}/>
       <Routes>
-        <Route exact path='/' element={<Home/>}/>
-        <Route exact path='/shop' element={<CardList/>}/>
-        <Route exact path='/about' element={<About/>}/>
+        <Route exact path='/' element={<CardList/>}/>
+        <Route exact path='/cart' element={<Cart/>}/>
       </Routes>
       </BrowserRouter>
       

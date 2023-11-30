@@ -4,6 +4,8 @@ import Cards from "./Cards";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Filter from "./Filter";
+import Context from "../context/Context";
 
 const CardList = () => {
     const baseAPI = 'https://fakestoreapi.com/products'
@@ -25,10 +27,19 @@ const CardList = () => {
 
         return(
         <>
+        <h1>Kaden's Shop</h1>
+        <Context
+        data={data}
+        />
+        <Filter
+        data={data}
+        setData={setData}
+        fetchData={fetchData}
+        />
         <Container fluid>
             <Row>
                 {data.map((item) => (
-                    <Col key={item.id} ><Cards 
+                    <Col key={item.id} xs={6} md={4} lg={3} xl={2} ><Cards 
                     id={item.id}
                     title={item.title} 
                     price={item.price} 

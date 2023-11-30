@@ -1,24 +1,8 @@
-import React, {useState, useEffect} from "react";
-import axios from "axios";
+import React from "react";
+import Button from 'react-bootstrap/Button';
 
-const Filter = () => {
-    const baseAPI = 'https://fakestoreapi.com/products'
-
-    const [data, setData] = useState([])
+const Filter = ({data, setData, fetchData}) => {
     const category = [...new Set(data.map((item) => item.category))]
-    const fetchData = async () => {
-        try {
-            const response = await axios.get(baseAPI)
-            setData(response.data);
-        } catch (error) {
-            console.error(error)
-        }
-    }
-
-    useEffect(() => {
-        fetchData();
-    }, [])
-
     const filterItem = (curcat) => {
         const newItem = data.filter((newVal) => {
             console.log(newVal.category)
@@ -33,21 +17,23 @@ const Filter = () => {
           <div className="d-flex justify-content-center">
             {category.map((Val, id) => {
               return (
-                <button
-                  className="btn-dark text-white p-1 px-2 mx-5 btn fw-bold"
+                <Button
+                variant='outline-dark ms-2'
+                  className="filters"
                   key={id}
                   onClick={() => filterItem(Val)}
                 >
                   {Val}
-                </button>
+                </Button>
               );
             })}
-            <button
-              className="btn-dark text-white p-1 px-3 mx-5 fw-bold btn"
-              onClick={() => setData(data)}
+            <Button
+            variant="outline-dark ms-2"
+              className="filters"
+              onClick={() => fetchData()}
             >
               All
-            </button>
+            </Button>
            </div>
         </>
       );
